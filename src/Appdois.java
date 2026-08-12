@@ -1,6 +1,10 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Random;
 
 public class Appdois {
@@ -49,15 +53,23 @@ public class Appdois {
     }
     // ordenar aqui
     
-    
+    public static Integer[] carregarArquivo(String nomeArquivo) throws IOException {
+        List<String> linhas = Files.readAllLines(Paths.get(nomeArquivo));
+        Integer[] numeros = new Integer[linhas.size()];
+        for (int i = 0; i < linhas.size(); i++) {
+            numeros[i] = Integer.parseInt(linhas.get(i).trim());
+        }
+        return numeros;
+    }
 
-    public static void main(String[] args) {
-        Integer[] numeros = gerarVetorAleatorio(1000);
+    public static void main(String[] args) throws IOException {
+        Integer[] numeros = carregarArquivo("numeros_aleatorios.txt");
         BubbleSort<Integer> bubbleSort = new BubbleSort<>();
 
         long inicio = System.currentTimeMillis();    
         //System.out.println("Vetor original: " + Arrays.toString(numeros));
-        bubbleSort.sort(numeros);
+        bubbleSort.sortVerbose(numeros);
+      
         //System.out.println("Vetor ordenado: " + Arrays.toString(numeros));
         long fim = System.currentTimeMillis();
         System.out.println("Tempo = "+(fim-inicio)+" ms");
