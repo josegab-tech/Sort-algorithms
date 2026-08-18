@@ -74,7 +74,7 @@ public class BubbleSort<T extends Comparable<T>> {
                     System.out.println("Resultado: " + Arrays.toString(array));
                     trocou = true;
                 }
-            }
+            }// Descomentar aqui para aprimorar
             /*if (!trocou) {
                 break; // Se não houve trocas, o array já está ordenado
             }*/

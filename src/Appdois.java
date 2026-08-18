@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
+
 public class Appdois {
     /*
      * public static Pessoa[] vetorDePessoas() {
@@ -63,15 +64,25 @@ public class Appdois {
     }
 
     public static void main(String[] args) throws IOException {
-        Integer[] numeros = carregarArquivo("numeros_aleatorios.txt");
+        Integer[] numeros = gerarVetorAleatorio(200000);
         BubbleSort<Integer> bubbleSort = new BubbleSort<>();
+        SelectionSort<Integer> selectionSort = new SelectionSort<>();
 
         long inicio = System.currentTimeMillis();    
         //System.out.println("Vetor original: " + Arrays.toString(numeros));
-        bubbleSort.sortVerbose(numeros);
+        bubbleSort.sort(numeros);
       
         //System.out.println("Vetor ordenado: " + Arrays.toString(numeros));
         long fim = System.currentTimeMillis();
-        System.out.println("Tempo = "+(fim-inicio)+" ms");
+        int tamanhoVetor = numeros.length;
+        System.out.println("Tamanho do vetor = "+tamanhoVetor);
+        
+        System.out.println("Tempo do BubbleSort = "+(fim-inicio)+" ms");
+
+        
+        inicio = System.currentTimeMillis();
+        selectionSort.sort(numeros);
+        fim = System.currentTimeMillis();
+        System.out.println("Tempo do SelectionSort = "+(fim-inicio)+" ms");
     }
 }
