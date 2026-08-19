@@ -2,14 +2,14 @@ import java.util.*;
 
 public class BubbleSort<T extends Comparable<T>> {
 
-    private int totalComparacoes = 0;
-    private int totalTrocas = 0;
+    private long totalComparacoes = 0;
+    private long totalTrocas = 0;
 
-    public int getTotalComparacoes() {
+    public long getTotalComparacoes() {
         return totalComparacoes;
     }
 
-    public int getTotalTrocas() {
+    public long getTotalTrocas() {
         return totalTrocas;
     }
 
@@ -24,10 +24,11 @@ public class BubbleSort<T extends Comparable<T>> {
 
         this.totalComparacoes = 0;
         this.totalTrocas = 0;
+        boolean trocou = false;
 
         for (int fase = 1; fase < n; fase++) {
             // j controla comparaçoes
-            boolean trocou = false;
+            
             for (int j = 0; j < n - fase; j++) {
                 this.totalComparacoes++;
                 // compare responsavel por comparar 2 objetos, se compare retornar valor maior
@@ -41,6 +42,8 @@ public class BubbleSort<T extends Comparable<T>> {
             }
             if (!trocou) {
                 break; // Se não houve trocas, o array já está ordenado
+            }else{
+                trocou = false; // Reset trocou for the next phase
             }
         }
 
@@ -54,8 +57,8 @@ public class BubbleSort<T extends Comparable<T>> {
     // sort verboso
     public T[] sortVerbose(T[] array, Comparator<T> comparator) {
         int n = array.length;
-        int comparacoes = 1;
-        int trocas = 0;
+        long comparacoes = 1;
+        long trocas = 0;
 
         for (int fase = 1; fase < n; fase++) {
             System.out.println("Fase " + fase + ": " + Arrays.toString(array));
@@ -75,11 +78,13 @@ public class BubbleSort<T extends Comparable<T>> {
                     trocou = true;
                 }
             }// Descomentar aqui para aprimorar
-            /*if (!trocou) {
+           /*  if (!trocou) {
                 break; // Se não houve trocas, o array já está ordenado
+            }else{
+                trocou = false; // Reset trocou for the next phase
             }*/
         }
-        int totalcomp = comparacoes - 1;
+        long totalcomp = comparacoes - 1; 
 
         this.totalComparacoes = totalcomp;
         this.totalTrocas = trocas;

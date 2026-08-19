@@ -7,7 +7,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
-
 public class Appdois {
     /*
      * public static Pessoa[] vetorDePessoas() {
@@ -42,18 +41,16 @@ public class Appdois {
      * System.out.println(p);
      * }
      */
-    private static Integer[] gerarVetorAleatorio(int n) {
-        Random random = new Random();
-        Integer[] vetor = new Integer[n];
-
-        for (int i = 0; i < n; i++) {
-            vetor[i] = random.nextInt(n * 10);
+    public static Integer[] gerarVetorAleatorio(int tamanho) {
+        Integer[] vetor = new Integer[tamanho];
+        for (int i = 0; i < tamanho; i++) {
+            vetor[i] = (int) (Math.random() * 100);
         }
-
         return vetor;
     }
+
     // ordenar aqui
-    
+
     public static Integer[] carregarArquivo(String nomeArquivo) throws IOException {
         List<String> linhas = Files.readAllLines(Paths.get(nomeArquivo));
         Integer[] numeros = new Integer[linhas.size()];
@@ -64,25 +61,35 @@ public class Appdois {
     }
 
     public static void main(String[] args) throws IOException {
-        Integer[] numeros = gerarVetorAleatorio(200000);
+        Integer[] numeros = gerarVetorAleatorio(50000);
+        Integer[] numerosBubbleSort = numeros.clone();
         BubbleSort<Integer> bubbleSort = new BubbleSort<>();
-        SelectionSort<Integer> selectionSort = new SelectionSort<>();
+        SelectionSort selectionSort = new SelectionSort<>();
 
-        long inicio = System.currentTimeMillis();    
-        //System.out.println("Vetor original: " + Arrays.toString(numeros));
-        bubbleSort.sort(numeros);
-      
-        //System.out.println("Vetor ordenado: " + Arrays.toString(numeros));
+        System.out.println("Vetor original: " + Arrays.toString(numeros));
+        long inicio = System.currentTimeMillis();
+        bubbleSort.sort(numerosBubbleSort);
+        long comp = bubbleSort.getTotalComparacoes();
+        long trocas = bubbleSort.getTotalTrocas();
         long fim = System.currentTimeMillis();
         int tamanhoVetor = numeros.length;
-        System.out.println("Tamanho do vetor = "+tamanhoVetor);
-        
-        System.out.println("Tempo do BubbleSort = "+(fim-inicio)+" ms");
+        System.out.println("Do BubbleSort:");
+        System.out.println("Tamanho do vetor = " + tamanhoVetor);
+        System.out.println("Total de comparações: " + comp);
+        System.out.println("Total de trocas: " + trocas);
+        System.out.println("Tempo do BubbleSort = " + (fim - inicio) + " ms");
 
-        
+        inicio = 0;
+        fim = 0;
         inicio = System.currentTimeMillis();
         selectionSort.sort(numeros);
         fim = System.currentTimeMillis();
-        System.out.println("Tempo do SelectionSort = "+(fim-inicio)+" ms");
-    }
+        long compSelection = selectionSort.getContaComparacoes();
+        long trocasSelection = selectionSort.getContaTrocas();
+        System.out.println("Do SelectionSort:");
+        System.out.println("Tamanho do vetor = " + tamanhoVetor);
+        System.out.println("Total de comparações: " + compSelection);
+        System.out.println("Total de trocas: " + trocasSelection);
+        System.out.println("Tempo do SelectionSort = " + (fim - inicio) + " ms");
+}
 }
