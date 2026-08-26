@@ -39,12 +39,12 @@ public class BubbleSort<T extends Comparable<T>> {
                    trocou = true;
                     this.totalTrocas++;
                 }
-            }
+            }/* 
             if (!trocou) {
                 break; // Se não houve trocas, o array já está ordenado
             }else{
                 trocou = false; // Reset trocou for the next phase
-            }
+            }*/
         }
 
         return array;

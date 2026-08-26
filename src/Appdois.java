@@ -61,12 +61,12 @@ public class Appdois {
     }
 
     public static void main(String[] args) throws IOException {
-        Integer[] numeros = gerarVetorAleatorio(500);
+        Integer[] numeros = gerarVetorAleatorio(150000);
         Integer[] numerosBubbleSort = numeros.clone();
         Integer[] numerosInsertionSort = numeros.clone();
         BubbleSort<Integer> bubbleSort = new BubbleSort<>();
-        SelectionSort selectionSort = new SelectionSort<>();
-        InsertionSort insertionSort = new InsertionSort<>();
+        SelectionSort<Integer> selectionSort = new SelectionSort<>();
+        InsertionSort<Integer> insertionSort = new InsertionSort<>();
 
         System.out.println("Vetor original: " + Arrays.toString(numeros));
         long inicio = System.currentTimeMillis();
@@ -97,7 +97,7 @@ public class Appdois {
         inicio = 0;
         fim = 0;
         inicio = System.currentTimeMillis();
-        insertionSort.sort(numeros);
+        insertionSort.sort(numerosInsertionSort);
         fim = System.currentTimeMillis();
         long compInsertion = insertionSort.getContaComparacoes();
         long trocasInsertion = insertionSort.getContaTrocas();
