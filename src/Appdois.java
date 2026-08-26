@@ -61,10 +61,12 @@ public class Appdois {
     }
 
     public static void main(String[] args) throws IOException {
-        Integer[] numeros = gerarVetorAleatorio(50000);
+        Integer[] numeros = gerarVetorAleatorio(500);
         Integer[] numerosBubbleSort = numeros.clone();
+        Integer[] numerosInsertionSort = numeros.clone();
         BubbleSort<Integer> bubbleSort = new BubbleSort<>();
         SelectionSort selectionSort = new SelectionSort<>();
+        InsertionSort insertionSort = new InsertionSort<>();
 
         System.out.println("Vetor original: " + Arrays.toString(numeros));
         long inicio = System.currentTimeMillis();
@@ -91,5 +93,20 @@ public class Appdois {
         System.out.println("Total de comparações: " + compSelection);
         System.out.println("Total de trocas: " + trocasSelection);
         System.out.println("Tempo do SelectionSort = " + (fim - inicio) + " ms");
+
+        inicio = 0;
+        fim = 0;
+        inicio = System.currentTimeMillis();
+        insertionSort.sort(numeros);
+        fim = System.currentTimeMillis();
+        long compInsertion = insertionSort.getContaComparacoes();
+        long trocasInsertion = insertionSort.getContaTrocas();
+        System.out.println("Do InsertionSort:");
+        System.out.println("Tamanho do vetor = " + tamanhoVetor);
+        System.out.println("Total de comparações: " + compInsertion);
+        System.out.println("Total de trocas: " + trocasInsertion);
+        System.out.println("Tempo do InsertionSort = " + (fim - inicio) + " ms");
+
+
 }
 }
