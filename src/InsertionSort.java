@@ -9,7 +9,7 @@ public class InsertionSort<T extends Comparable<T>> {
         return this.contaComparacoes;
     }
 
-    public long getContaTrocas() {
+    public long getContaDeslocamentos() {
         return this.contaTrocas;
     }
 

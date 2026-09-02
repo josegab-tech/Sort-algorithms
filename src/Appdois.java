@@ -66,9 +66,9 @@ public class Appdois {
         Integer[] numerosInsertionSort = numeros.clone();
         BubbleSort<Integer> bubbleSort = new BubbleSort<>();
         SelectionSort<Integer> selectionSort = new SelectionSort<>();
-        InsertionSort<Integer> insertionSort = new InsertionSort<>();
+        InsertionSort<Integer> insertionSort2 = new InsertionSort<>();
 
-        System.out.println("Vetor original: " + Arrays.toString(numeros));
+        //System.out.println("Vetor original: " + Arrays.toString(numeros));
         long inicio = System.currentTimeMillis();
         bubbleSort.sort(numerosBubbleSort);
         long comp = bubbleSort.getTotalComparacoes();
@@ -79,7 +79,7 @@ public class Appdois {
         System.out.println("Tamanho do vetor = " + tamanhoVetor);
         System.out.println("Total de comparações: " + comp);
         System.out.println("Total de trocas: " + trocas);
-        System.out.println("Tempo do BubbleSort = " + (fim - inicio) + " ms");
+        System.out.println("Tempo do BubbleSort = " + (fim - inicio) + " ms\n");
 
         inicio = 0;
         fim = 0;
@@ -92,15 +92,15 @@ public class Appdois {
         System.out.println("Tamanho do vetor = " + tamanhoVetor);
         System.out.println("Total de comparações: " + compSelection);
         System.out.println("Total de trocas: " + trocasSelection);
-        System.out.println("Tempo do SelectionSort = " + (fim - inicio) + " ms");
+        System.out.println("Tempo do SelectionSort = " + (fim - inicio) + " ms\n");
 
         inicio = 0;
         fim = 0;
         inicio = System.currentTimeMillis();
-        insertionSort.sort(numerosInsertionSort);
+        insertionSort2.sort(numerosInsertionSort);
         fim = System.currentTimeMillis();
-        long compInsertion = insertionSort.getContaComparacoes();
-        long trocasInsertion = insertionSort.getContaTrocas();
+        long compInsertion = insertionSort2.getContaComparacoes();
+        long trocasInsertion = insertionSort2.getContaDeslocamentos();
         System.out.println("Do InsertionSort:");
         System.out.println("Tamanho do vetor = " + tamanhoVetor);
         System.out.println("Total de comparações: " + compInsertion);
